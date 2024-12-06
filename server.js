@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-    origin: 'http://gabrilreyes.zapto.org/', // Aquí coloca el dominio de tu frontend
+    origin: 'https://gabrilreyes.zapto.org/', // Aquí coloca el dominio de tu frontend
     methods: 'GET, POST, PUT, DELETE',
     allowedHeaders: ['Content-Type'],
   };
