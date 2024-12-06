@@ -10,8 +10,13 @@ dotenv.config();
 
 const app = express();
 
-// Middlewares
-app.use(cors());
+const corsOptions = {
+    origin: 'http://gabrilreyes.zapto.org/', // Aquí coloca el dominio de tu frontend
+    methods: 'GET, POST, PUT, DELETE',
+    allowedHeaders: ['Content-Type'],
+  };
+  
+  app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 
