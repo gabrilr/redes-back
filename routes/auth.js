@@ -7,7 +7,7 @@ import { authenticateToken } from '../middleware/authMiddleware.js';
 const router = express.Router();
 
 // Registro de usuario
-router.post('/register', async (req, res) => {
+router.post('/register', authenticateToken, async (req, res) => {
     const { usuario, contrasena, categoria } = req.body;
 
     try {
@@ -62,14 +62,6 @@ router.post('/login', async (req, res) => {
         console.error(error);
         res.status(500).json({ message: 'Error al iniciar sesión' });
     }
-});
-
-// Endpoint protegido
-router.get('/protected', authenticateToken, (req, res) => {
-    res.json({
-        message: 'Acceso concedido al endpoint protegido',
-        user: req.user, // Contiene idusuario, usuario y categoria
-    });
 });
 
 export default router;

@@ -1,9 +1,10 @@
 import express from 'express';
 import { db } from '../database/db.js';
+import { authenticateToken } from '../middleware/authMiddleware.js';
 const router = express.Router();
 
 // Obtener todos los cultivos
-router.get('/', async (req, res) => {
+router.get('/', authenticateToken, async (req, res) => {
   const query = 'SELECT * FROM cultivos';
   
   try {
